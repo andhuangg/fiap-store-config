@@ -1,0 +1,27 @@
+# Application do ambiente dev (aplicar uma vez com: kubectl apply -n argocd -f apps/store-dev.yaml)
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fiap-store-dev
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io   # apagar a Application apaga os recursos que ela criou
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/andhuangg/fiap-store-config.git
+    targetRevision: main
+    path: overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: store-dev
+  syncPolicy:
+    automated:
+      prune: true        # remove do cluster o que saiu do Git
+      selfHeal: true     # desfaz alteracoes manuais (drift)
+    syncOptions:
+      - CreateNamespace=true
+    managedNamespaceMetadata:
+      labels:
+        pod-security.kubernetes.io/enforce: restricted
+        pod-security.kubernetes.io/enforce-version: v1.33
