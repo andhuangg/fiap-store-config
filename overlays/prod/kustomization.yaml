@@ -10,6 +10,6 @@ replicas:
 images:
 - name: ghcr.io/andhuangg/fiap-store-api
   newName: ghcr.io/andhuangg/fiap-store-api
-  newTag: "1.0"
+  newTag: "1.1"
 patches:
 - path: patch-prod.yaml
