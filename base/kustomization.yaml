@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - store-api-deployment.yaml
   - store-api-service.yaml
+  - store-relatorio-deployment.yaml
 labels:
   - pairs: {app.kubernetes.io/part-of: fiap-store}
     includeSelectors: false
