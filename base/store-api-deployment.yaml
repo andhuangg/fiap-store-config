@@ -6,6 +6,7 @@ metadata:
 spec:
   replicas: 1
   revisionHistoryLimit: 5
+  progressDeadlineSeconds: 120     # rollout travado vira "Degraded" em 2 min (padrao: 10 min)
   selector:
     matchLabels: {app: store-api}
   strategy:
