@@ -7,7 +7,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io   # apagar a Application apaga os recursos que ela criou
 spec:
-  project: default
+  project: fiap-store
   source:
     repoURL: https://github.com/andhuangg/fiap-store-config.git
     targetRevision: main
