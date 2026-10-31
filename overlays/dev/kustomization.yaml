@@ -5,8 +5,12 @@ resources:
 - ../../base
 - sealedsecret-store-db.yaml
 replicas:
-- count: 4
+- count: 2
   name: store-api
+- count: 1
+  name: store-front
+- count: 1
+  name: store-worker
 images:
 - name: ghcr.io/andhuangg/fiap-store-api
   newName: ghcr.io/andhuangg/fiap-store-api

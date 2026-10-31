@@ -8,9 +8,14 @@ resources:
 replicas:
 - count: 4
   name: store-api
+- count: 2
+  name: store-front
+- count: 2
+  name: store-worker
 images:
 - name: ghcr.io/andhuangg/fiap-store-api
   newName: ghcr.io/andhuangg/fiap-store-api
   newTag: "1.1"
 patches:
 - path: patch-prod.yaml
+- path: patch-prod-worker.yaml

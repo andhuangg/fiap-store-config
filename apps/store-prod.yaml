@@ -1,9 +1,9 @@
-# Application do ambiente prod (aplicar uma vez com: kubectl apply -n argocd -f apps/store-prod.yaml)
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: fiap-store-prod
   namespace: argocd
+  annotations: {argocd.argoproj.io/sync-wave: "0"}
   finalizers:
     - resources-finalizer.argocd.argoproj.io   # apagar a Application apaga os recursos que ela criou
 spec:
@@ -19,9 +19,3 @@ spec:
     automated:
       prune: true        # remove do cluster o que saiu do Git
       selfHeal: true     # desfaz alteracoes manuais (drift)
-    syncOptions:
-      - CreateNamespace=true
-    managedNamespaceMetadata:
-      labels:
-        pod-security.kubernetes.io/enforce: restricted
-        pod-security.kubernetes.io/enforce-version: v1.33
