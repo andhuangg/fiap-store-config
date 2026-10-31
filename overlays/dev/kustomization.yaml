@@ -8,4 +8,4 @@ replicas:
     count: 4
 images:
   - name: ghcr.io/andhuangg/fiap-store-api
-    newTag: "1.0"
+    newTag: "1.1"
