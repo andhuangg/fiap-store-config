@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: store-dev
 resources:
 - ../../base
+- sealedsecret-store-db.yaml
 replicas:
 - count: 4
   name: store-api

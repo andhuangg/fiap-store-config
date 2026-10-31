@@ -4,6 +4,7 @@ namespace: store-prod
 resources:
 - ../../base
 - pdb.yaml
+- sealedsecret-store-db.yaml
 replicas:
 - count: 4
   name: store-api
