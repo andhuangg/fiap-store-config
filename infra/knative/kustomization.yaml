@@ -16,3 +16,10 @@ patches:
     - op: add
       path: /data/fiap.local
       value: ""
+# minikube nao tem LoadBalancer: um Service LoadBalancer sem IP externo fica "Progressing" para sempre
+# no health do Argo e trava o sync-wave do App-of-Apps. NodePort atende o laboratorio.
+- target: {kind: Service, name: kourier, namespace: kourier-system}
+  patch: |-
+    - op: replace
+      path: /spec/type
+      value: NodePort
